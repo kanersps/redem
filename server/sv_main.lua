@@ -40,7 +40,7 @@ AddEventHandler("redem:playerActivated", function()
     printServer("Player activated: " .. GetPlayerName(_source))
 
     local id
-    for k,v in ipairs(GetPlayerIdentifiers(Source))do
+    for k,v in ipairs(GetPlayerIdentifiers(_source))do
         if string.sub(v, 1, string.len(settings.defaultSettings.identifierUsed .. ":")) == (settings.defaultSettings.identifierUsed .. ":") then
             id = v
             break
