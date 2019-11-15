@@ -36,6 +36,8 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 				TriggerClientEvent("es:removedMoney", self.source, math.abs(prevMoney - newMoney), (settings.defaultSettings.nativeMoneySystem == "1"))
 			end
 
+			TriggerClientEvent('redem:addMoney', self.source, self.money)
+
 			-- Checks what money UI component is enabled
 			if settings.defaultSettings.nativeMoneySystem == "0" then
 				TriggerClientEvent('es:activateMoney', self.source , self.money)
@@ -57,6 +59,8 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 			TriggerEvent("es:setPlayerData", self.source, "bank", m, function(response, success)
 				self.bank = m
 			end)
+
+			TriggerClientEvent('redem:addBank', self.source, self.bank)
 		else
 			log('ES_ERROR: There seems to be an issue while setting bank, something else then a number was entered.')
 			print('ES_ERROR: There seems to be an issue while setting bank, something else then a number was entered.')
@@ -82,6 +86,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just added
 			TriggerClientEvent("es:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
+			TriggerClientEvent('redem:addMoney', self.source, self.money)
 			
 			-- Checks what money UI component is enabled
 			if settings.defaultSettings.nativeMoneySystem == "0" then
@@ -102,7 +107,8 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just removed
 			TriggerClientEvent("es:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			
+			TriggerClientEvent('redem:addMoney', self.source, self.money)
+
 			-- Checks what money UI component is enabled
 			if settings.defaultSettings.nativeMoneySystem == "0" then
 				TriggerClientEvent('es:activateMoney', self.source , self.money)
@@ -121,6 +127,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- Triggers an event to tell the UI components money was just added
 			TriggerClientEvent("es:addedBank", self.source, m)
+			TriggerClientEvent('redem:addBank', self.source, self.bank)
 		else
 			log('ES_ERROR: There seems to be an issue while adding to bank, a different type then number was trying to be added.')
 			print('ES_ERROR: There seems to be an issue while adding to bank, a different type then number was trying to be added.')
@@ -135,6 +142,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- Triggers an event to tell the UI components money was just removed
 			TriggerClientEvent("es:removedBank", self.source, m)
+			TriggerClientEvent('redem:addBank', self.source, self.bank)
 		else
 			log('ES_ERROR: There seems to be an issue while removing from bank, a different type then number was trying to be removed.')
 			print('ES_ERROR: There seems to be an issue while removing from bank, a different type then number was trying to be removed.')

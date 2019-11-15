@@ -47,3 +47,14 @@ RegisterNetEvent("redem:playerLoaded")
 AddEventHandler("redem:playerLoaded", function(_money)
     money = _money
 end)
+
+-- Updating
+RegisterNetEvent("redem:addMoney")
+AddEventHandler("redem:addMoney", function(_money)
+    money = _money
+end)
+
+RegisterNetEvent("redem:addBank")
+AddEventHandler("redem:addBank", function(_money)
+    bank = _money
+end)
