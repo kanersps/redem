@@ -10,7 +10,8 @@ settings = {}
 settings.defaultSettings = {
 	['startingCash'] = GetConvar('es_startingCash', '0'),
 	['startingBank'] = GetConvar('es_startingBank', '0'),
-    ['defaultDatabase'] = GetConvar('es_defaultDatabase', '1')
+    ['defaultDatabase'] = GetConvar('es_defaultDatabase', '1'),
+    ['enableCustomData'] = GetConvar('es_enableCustomData', '0')
 }
 
 print("(server) EssentialMode: RedM edition loaded (" .. _VERSION .. ")")

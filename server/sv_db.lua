@@ -25,7 +25,7 @@ db = {}
 exposedDB = {}
 
 function db.firstRunCheck()
-	if true then
+	if settings.defaultSettings.enableCustomData ~= '1' and settings.defaultSettings.defaultDatabase == '1' then
 		TriggerEvent("es_sqlite:initialize")
 	else
 		TriggerEvent('es_db:firstRunCheck', ip, port)
