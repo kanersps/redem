@@ -23,3 +23,27 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+function DrawMoney(x, y, text, r, g, b, a, scaleX, scaleY)    
+    SetTextScale(scaleX, scaleY)
+    Citizen.InvokeNative(0x50a41ad966910f03, r, g, b, a)
+    local str = Citizen.InvokeNative(0xFA925AC00EB830B9, 2, "CASH_STRING", text, Citizen.ResultAsLong())
+    Citizen.InvokeNative(0xd79334a4bb99bad1, str, x, y)
+end
+
+-- Draw cash
+local money = 0
+local bank = 0
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(0)
+        DrawMoney(0.01, 0.01, money, 255, 255, 255, 255, 0.342, 0.342)
+        DrawMoney(0.01, 0.03, bank, 255, 255, 255, 255, 0.342, 0.342)
+    end
+end)
+
+-- Player loaded
+RegisterNetEvent("redem:playerLoaded")
+AddEventHandler("redem:playerLoaded", function(_money)
+    money = _money
+end)

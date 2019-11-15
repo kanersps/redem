@@ -29,6 +29,9 @@ function loadUser(identifier, source, new, licenseNotRequired)
 			-- Sets the money "icon" on the client. This is UTF8
 			TriggerClientEvent('redem:setMoneyIcon', Source,settings.defaultSettings.moneyIcon)
 
+			-- Give client data
+			TriggerClientEvent('redem:playerLoaded', Source, Users[Source].getMoney())
+
 			-- Sends the command suggestions to the client, this creates a neat autocomplete
 			--[[for k,v in pairs(commandSuggestions) do
 				TriggerClientEvent('chat:addSuggestion', Source, settings.defaultSettings.commandDelimeter .. k, v.help, v.params)
