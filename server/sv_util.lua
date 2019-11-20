@@ -5,6 +5,14 @@ function printServer(message)
     print(_serverPrefix .. message)
 end
 
+function log(msg)
+    -- Later
+end
+
+function debugMsg(msg)
+    -- Later
+end
+
 function stringsplit(inputstr, sep)
 	if sep == nil then
 		sep = "%s"
