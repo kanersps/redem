@@ -34,6 +34,16 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
 	end
 end)
 
+AddEventHandler('playerDropped', function()
+	local Source = source
+
+	if(Users[Source])then
+		TriggerEvent("redem:playerDropped", Users[Source])
+		db.updateUser(Users[Source].get('identifier'), {money = Users[Source].getMoney(), bank = Users[Source].getBank()})
+		Users[Source] = nil
+	end
+end)
+
 RegisterServerEvent("redem:playerActivated")
 AddEventHandler("redem:playerActivated", function()
     local _source = source
