@@ -87,7 +87,7 @@ local function getDocument(uuid, callback)
 				if doc then callback(doc) else callback(false) end
 			end
 		end
-	end)	
+	end)
 end
 
 local function createDocument(doc, cb)
@@ -147,7 +147,9 @@ function db.updateUser(identifier, new, callback)
 			end)
 		end)
 	elseif settings.defaultSettings.defaultDatabase == '1' and settings.defaultSettings.enableCustomData ~= '1' then
-		TriggerEvent('es_sqlite:updateUser', identifier, new, callback)
+		for k,v in pairs(new)do
+			TriggerEvent('es_sqlite:updateUserData', identifier, k, v)
+		end
 	else
 		TriggerEvent('es_db:updateUser', identifier, new, callback)
 	end
