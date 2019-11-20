@@ -22,3 +22,12 @@ server_scripts {
 	--'server/player/login.lua',
 	--'server/metrics.lua'
 }
+
+server_exports {
+	'getPlayerFromId',
+	'addAdminCommand',
+	'addCommand',
+	'addGroupCommand',
+	'addACECommand',
+	'canGroupTarget'
+}
