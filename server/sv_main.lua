@@ -5,6 +5,7 @@ _serverPrefix = "(client) RedEM: "
 _VERSION = '0.1.0'
 _firstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
+commands = {}
 
 settings = {}
 settings.defaultSettings = {
