@@ -1,3 +1,6 @@
+--                                     Licensed under                                     --
+-- Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License --
+
 client_scripts {
     'client/cl_main.lua'
 }
