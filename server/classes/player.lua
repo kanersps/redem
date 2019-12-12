@@ -36,12 +36,9 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 				TriggerClientEvent("es:removedMoney", self.source, math.abs(prevMoney - newMoney), (settings.defaultSettings.nativeMoneySystem == "1"))
 			end
 
-			TriggerClientEvent('redem:addMoney', self.source, self.money)
+			TriggerClientEvent('redem:addMoney', self.source, m)
 
-			-- Checks what money UI component is enabled
-			if settings.defaultSettings.nativeMoneySystem == "0" then
-				TriggerClientEvent('es:activateMoney', self.source , self.money)
-			end
+			TriggerClientEvent('redem:activateMoney', self.source , self.money)
 		else
 			print('ES_ERROR: There seems to be an issue while setting money, something else then a number was entered.')
 		end
@@ -86,12 +83,9 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just added
 			TriggerClientEvent("es:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			TriggerClientEvent('redem:addMoney', self.source, self.money)
+			TriggerClientEvent('redem:addMoney', self.source, m)
 			
-			-- Checks what money UI component is enabled
-			if settings.defaultSettings.nativeMoneySystem == "0" then
-				TriggerClientEvent('es:activateMoney', self.source , self.money)
-			end
+			TriggerClientEvent('redem:activateMoney', self.source , self.money)
 		else
 			log('ES_ERROR: There seems to be an issue while adding money, a different type then number was trying to be added.')
 			print('ES_ERROR: There seems to be an issue while adding money, a different type then number was trying to be added.')
@@ -107,12 +101,9 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just removed
 			TriggerClientEvent("es:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			TriggerClientEvent('redem:addMoney', self.source, self.money)
+			TriggerClientEvent('redem:addMoney', self.source, m)
 
-			-- Checks what money UI component is enabled
-			if settings.defaultSettings.nativeMoneySystem == "0" then
-				TriggerClientEvent('es:activateMoney', self.source , self.money)
-			end
+			TriggerClientEvent('redem:activateMoney', self.source , self.money)
 		else
 			log('ES_ERROR: There seems to be an issue while removing money, a different type then number was trying to be removed.')
 			print('ES_ERROR: There seems to be an issue while removing money, a different type then number was trying to be removed.')
