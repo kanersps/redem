@@ -2,6 +2,7 @@
 -- Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License --
 
 _clientPrefix = "(client) RedEM: "
+_drawHUD = true
 
 print("(client) EssentialMode: RedM edition loaded")
 
@@ -37,8 +38,10 @@ local bank = 0
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        DrawMoney(0.01, 0.01, money, 255, 255, 255, 255, 0.342, 0.342)
-        DrawMoney(0.01, 0.03, bank, 255, 255, 255, 255, 0.342, 0.342)
+        if _drawHUD then
+            DrawMoney(0.01, 0.01, money, 255, 255, 255, 255, 0.342, 0.342)
+            DrawMoney(0.01, 0.03, bank, 255, 255, 255, 255, 0.342, 0.342)
+        end
     end
 end)
 
@@ -57,4 +60,10 @@ end)
 RegisterNetEvent("redem:addBank")
 AddEventHandler("redem:addBank", function(_money)
     bank = _money
+end)
+
+-- Stop drawing
+RegisterNetEvent("redem:setDrawUI")
+AddEventHandler("redem:setDrawUI", function(status)
+    _drawHUD = status
 end)
