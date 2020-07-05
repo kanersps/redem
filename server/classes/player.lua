@@ -101,7 +101,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just removed
 			TriggerClientEvent("es:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			TriggerClientEvent('redem:addMoney', self.source, m)
+			TriggerClientEvent('redem:removeMoney', self.source, m)
 
 			TriggerClientEvent('redem:activateMoney', self.source , self.money)
 		else
